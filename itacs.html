@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>itacs Readme</title>
+        <style>
+/* From extension vscode.github */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+.vscode-dark img[src$=\#gh-light-mode-only],
+.vscode-light img[src$=\#gh-dark-mode-only] {
+	display: none;
+}
+
+</style>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css">
+<link href="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+<style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+        </style>
+        <style>
+.task-list-item {
+    list-style-type: none;
+}
+
+.task-list-item-checkbox {
+    margin-left: -20px;
+    vertical-align: middle;
+    pointer-events: none;
+}
+</style>
+        
+    </head>
+    <body class="vscode-body vscode-light">
+        <h1 id="itacs-readme">itacs Readme</h1>
+<h2 id="start-dev">start dev</h2>
+<pre><code class="language-Powershell"><span class="hljs-built_in">Install-Module</span> PSSharedGoods <span class="hljs-literal">-Scope</span> CurrentUser <span class="hljs-literal">-AllowClobber</span>
+<span class="hljs-built_in">New-Item</span> <span class="hljs-literal">-ItemType</span> Junction <span class="hljs-literal">-Target</span> (<span class="hljs-built_in">Get-Location</span>).Path <span class="hljs-literal">-Path</span> <span class="hljs-string">&quot;<span class="hljs-variable">$</span>([Environment]::GetFolderPath(&quot;</span>MyDocuments<span class="hljs-string">&quot;))\\PowerShell\\Modules\\<span class="hljs-variable">$</span>(((Get-Location).Path | Get-Item).Name)&quot;</span>
+<span class="hljs-built_in">Import-Module</span> O365Essentials 
+<span class="hljs-comment"># to unload Module</span>
+<span class="hljs-built_in">Remove-Module</span> O365Essentials 
+</code></pre>
+<h2 id="connect-via-certificate-thumbprint">connect via certificate thumbprint</h2>
+<pre><code class="language-Powershell"><span class="hljs-built_in">Connect-O365Admin</span> <span class="hljs-literal">-ApplicationId</span> c30b2917<span class="hljs-literal">-9536-4806-8e71-5a10bee72955</span> <span class="hljs-literal">-CertificateThumbprint</span> B6F844FC2D678E43BD3715AD6F32E0316B8503E4 <span class="hljs-literal">-DomainName</span> ahkglob.onmicrosoft.com
+<span class="hljs-comment"># 0iMyXKgRVb84i2cT</span>
+<span class="hljs-variable">$Credential</span> = <span class="hljs-built_in">Get-Credential</span> <span class="hljs-literal">-UserName</span> <span class="hljs-string">&quot;admin@ahkglob.onmicrosoft.com&quot;</span> <span class="hljs-literal">-Message</span> <span class="hljs-string">&quot;BITTE&quot;</span> 
+<span class="hljs-built_in">Connect-O365Admin</span> <span class="hljs-literal">-Credential</span> <span class="hljs-variable">$Credential</span> <span class="hljs-literal">-DomainName</span> ahkglob.onmicrosoft.com
+</code></pre>
+
+        <script async src="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.js"></script>
+        
+    </body>
+    </html>
